@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2c7fdd;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .chat-header {
+            font-size: 20px;
+            color: #2c7fdd;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .chat-input {
+            width: calc(100% - 50px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .send-btn {
+            background-color: #2c7fdd;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .send-btn:hover {
+            background-color: #1e5ca8;
+        }
+
+        .chat-messages {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .user-message {
+            background-color: #e1f5fe;
+            text-align: right;
+        }
+
+        .bot-message {
+            background-color: #e8f5e9;
+            text-align: left;
+        }
+
+        footer {
+            background-color: #2c7fdd;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Welcome to Your Pharmacy Chatbot
+</header>
+
+<div class="chat-container">
+    <div class="chat-header">How can we assist you today?</div>
+
+    <input type="text" class="chat-input" id="userInput" placeholder="Describe your symptoms...">
+    <button class="send-btn" onclick="sendMessage()">Send</button>
+
+    <div class="chat-messages" id="chatMessages">
+        <!-- Messages will appear here -->
+    </div>
+</div>
+
+<footer>
+    Powered by Medication Service Bot 🧑‍⚕️💊
+</footer>
+
+<script>
+    // Chatbot Functionality
+    function sendMessage() {
+        const userInput = document.getElementById("userInput").value;
+        if (userInput === "") return;
+
+        // Display user message
+        const userMessage = document.createElement("div");
+        userMessage.classList.add("message", "user-message");
+        userMessage.innerText = userInput;
+        document.getElementById("chatMessages").appendChild(userMessage);
+
+        // Clear input
+        document.getElementById("userInput").value = "";
+
+        // Simulate bot response
+        setTimeout(function() {
+            const botMessage = document.createElement("div");
+            botMessage.classList.add("message", "bot-message");
+            botMessage.innerText = "Processing your symptoms... Please wait!";
+            document.getElementById("chatMessages").appendChild(botMessage);
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
